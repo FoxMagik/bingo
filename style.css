@@ -114,6 +114,9 @@ button.secondary:hover {
     overflow: hidden;
     word-break: break-word;
     pointer-events: auto !important;
+    white-space: pre-line; /* This makes the \n work */
+    line-height: 1.2;
+    padding: 4px; /* More room for text */
 }
 
 .cell:hover {
