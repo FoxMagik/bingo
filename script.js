@@ -35,8 +35,9 @@ function generateCard() {
         } else {
             cell.innerText = selected[i > 12 ? i - 1 : i];
             cell.onclick = function() {
-                toggleMark(this, i);
-            };
+    console.log("Cell clicked!"); // Add this to debug in the F12 console
+    toggleMark(this, i);
+};
         }
         cardElement.appendChild(cell);
     }
