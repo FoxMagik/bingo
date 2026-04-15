@@ -1,14 +1,25 @@
-/* Universal Reset - CRITICAL */
+/* Universal Reset */
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
 
+:root {
+    --bg-color: #1a1b26;
+    --card-bg: #24283b;
+    --border-color: #414868;
+    --text-main: #c0caf5;
+    --accent-color: #7aa2f7;
+    --success-color: #9ece6a;
+    --highlight-color: #bb9af7;
+    --error-color: #f7768e;
+}
+
 body {
-    background-color: #1a1b26;
-    color: #c0caf5;
-    font-family: 'Fira Code', monospace;
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    font-family: 'Fira Code', 'Courier New', monospace;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -16,6 +27,22 @@ body {
     padding: 20px;
 }
 
+.container {
+    width: 100%;
+    max-width: 550px;
+    text-align: center;
+    position: relative;
+    z-index: 10;
+}
+
+h1 { 
+    letter-spacing: 4px; 
+    margin-bottom: 20px; 
+}
+
+.accent { color: var(--accent-color); }
+
+/* Buttons */
 .controls {
     margin-bottom: 30px;
     display: flex;
@@ -24,104 +51,104 @@ body {
 }
 
 button {
-    display: inline-block;
-    background: rgba(122, 162, 247, 0.05); /* Very slight blue tint */
+    background: rgba(122, 162, 247, 0.1);
     color: var(--accent-color);
-    border: 1px solid var(--accent-color); /* This ensures the box is visible */
+    border: 1px solid var(--accent-color);
     padding: 12px 24px;
-    font-family: 'Fira Code', monospace;
-    font-size: 0.9rem;
+    font-family: inherit;
+    font-weight: bold;
     text-transform: uppercase;
-    letter-spacing: 2px;
     cursor: pointer;
     border-radius: 4px;
-    transition: all 0.3s ease;
-    margin: 5px;
+    transition: all 0.2s ease;
+    z-index: 50;
+    position: relative;
+}
+
+button:hover {
+    background: var(--accent-color);
+    color: var(--bg-color);
+    box-shadow: 0 0 15px var(--accent-color);
 }
 
 button.secondary {
-    border-color: #f7768e;
-    color: #f7768e;
-    background: rgba(247, 118, 142, 0.05);
+    color: var(--error-color);
+    border-color: var(--error-color);
+    background: rgba(247, 118, 142, 0.1);
 }
 
-/* Hover remains the same high-impact glow */
-button:hover {
-    background: var(--accent-color);
-    color: #1a1b26;
-    box-shadow: 0 0 15px var(--accent-color);
-}
-/* Button active state (click) */
-button:active {
-    transform: scale(0.95);
+button.secondary:hover {
+    background: var(--error-color);
+    color: var(--bg-color);
+    box-shadow: 0 0 15px var(--error-color);
 }
 
-.container {
-    width: 100%;
-    max-width: 600px; /* Standardized size */
-    margin: 0 auto;
-}
-
-/* The Grid - No room for error here */
+/* The Grid */
 .bingo-card {
-    pointer-events: auto;
     display: grid !important;
-    /* Force 5 columns of exactly equal width */
-    grid-template-columns: repeat(5, 1fr) !important; 
-    grid-auto-rows: 1fr; /* Force rows to match column width */
+    grid-template-columns: repeat(5, 1fr);
     gap: 10px;
-    background-color: #414868;
+    background-color: var(--border-color);
     padding: 10px;
     border-radius: 12px;
     width: 100%;
-    aspect-ratio: 1 / 1; /* Keeps the whole board a perfect square */
+    aspect-ratio: 1 / 1;
+    position: relative;
+    z-index: 5;
 }
 
 .cell {
-    transition: transform 0.1s ease, background 0.2s ease, border 0.2s ease;
-    background-color: #24283b;
-    color: #c0caf5;
+    background-color: var(--card-bg);
+    aspect-ratio: 1/1;
     display: flex;
     align-items: center;
     justify-content: center;
-    text-align: center;
-    padding: 5px;
+    padding: 8px;
     font-size: clamp(0.6rem, 2.5vw, 0.8rem);
+    text-align: center;
     cursor: pointer;
     border-radius: 6px;
+    transition: all 0.2s ease;
     border: 1px solid transparent;
-    transition: background 0.2s;
-    /* Important: prevents text from pushing the cell boundaries */
+    user-select: none;
     overflow: hidden;
-    word-break: break-word; 
+    word-break: break-word;
+    pointer-events: auto !important;
 }
 
 .cell:hover {
     border-color: var(--highlight-color);
     transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-    z-index: 10;
-    
-/* Marked state */
+    z-index: 20;
+}
+
 .cell.marked {
-    background-color: #9ece6a !important;
-    color: #1a1b26 !important;
+    background-color: var(--success-color) !important;
+    color: var(--bg-color) !important;
     font-weight: bold;
 }
 
 .free-space {
-    color: #bb9af7;
-    border: 1px dashed #bb9af7;
+    color: var(--highlight-color);
+    border: 1px dashed var(--highlight-color);
 }
 
-/* Add this animation */
+/* Win States */
+#win-message {
+    display: none;
+    color: var(--success-color);
+    margin-top: 20px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
 @keyframes win-glow {
     0% { box-shadow: 0 0 5px var(--accent-color); }
-    50% { box-shadow: 0 0 40px var(--success-color); }
+    50% { box-shadow: 0 0 30px var(--success-color); }
     100% { box-shadow: 0 0 5px var(--accent-color); }
 }
 
 .win-animation {
     animation: win-glow 1.5s infinite;
-    border: 2px solid var(--success-color) !important;
+    border: 2px solid var(--success-color);
 }
