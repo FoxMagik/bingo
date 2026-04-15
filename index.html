@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tech Bingo - Dark Mode</title>
+    <title>Tech Bingo - Terminal Edition</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -11,15 +11,16 @@
         <header>
             <h1>TECH <span class="accent">BINGO</span></h1>
             <div class="controls">
-                <button onclick="generateCard()">New Card</button>
-                <button class="secondary" onclick="resetMarkers()">Clear Board</button>
+                <button id="new-card-btn">New Card</button>
+                <button id="clear-board-btn" class="secondary">Clear Board</button>
             </div>
         </header>
 
-        <div id="win-message" style="display: none; color: var(--success-color); margin-top: 15px; font-weight: bold; font-size: 1.2rem;">
-    SYSTEM STATUS: BINGO ACHIEVED_
-</div>
         <main id="bingo-card" class="bingo-card"></main>
+        
+        <div id="win-message">
+            SYSTEM STATUS: BINGO ACHIEVED_
+        </div>
     </div>
     <script src="script.js"></script>
 </body>
