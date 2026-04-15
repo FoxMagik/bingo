@@ -1,87 +1,103 @@
+/* Universal Reset */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
 :root {
-    --bg-color: #1a1b26;      /* Deep Night */
-    --card-bg: #24283b;      /* Slightly lighter */
-    --border: #414868;
-    --text: #c0caf5;
-    --accent: #7aa2f7;       /* Blue */
-    --success: #9ece6a;      /* Green marker */
-    --highlight: #bb9af7;    /* Purple */
+    --bg-color: #1a1b26;
+    --card-bg: #24283b;
+    --border-color: #414868;
+    --text-main: #c0caf5;
+    --accent-color: #7aa2f7;
+    --success-color: #9ece6a;
+    --highlight-color: #bb9af7;
 }
 
 body {
+    background-color: #1a1b26; /* Fallback for --bg-color */
     background-color: var(--bg-color);
-    color: var(--text);
-    font-family: 'Fira Code', 'Courier New', monospace;
+    color: var(--text-main);
+    font-family: 'Fira Code', monospace, sans-serif;
     display: flex;
     justify-content: center;
-    margin: 0;
     padding: 20px;
 }
 
-.container { 
-    width: 95vw;          /* Use viewport width */
-    max-width: 600px;     /* Set a hard limit for desktop */
-    margin: 0 auto;       /* Center it */
-    text-align: center; 
+.container {
+    width: 100%;
+    max-width: 500px;
+    text-align: center;
 }
 
-h1 { letter-spacing: 4px; font-size: 2rem; }
-.accent { color: var(--accent); }
+h1 { 
+    margin-bottom: 20px; 
+    letter-spacing: 2px;
+}
 
-.controls { margin-bottom: 25px; display: flex; gap: 10px; justify-content: center; }
+.accent { color: var(--accent-color); }
+
+.controls { 
+    margin-bottom: 20px; 
+    display: flex; 
+    gap: 10px; 
+    justify-content: center; 
+}
 
 button {
-    background: var(--accent);
-    color: var(--bg-color);
+    background: var(--accent-color);
+    color: #1a1b26;
     border: none;
-    padding: 10px 20px;
-    font-weight: bold;
-    cursor: pointer;
+    padding: 10px 15px;
     border-radius: 4px;
-    font-family: inherit;
+    cursor: pointer;
+    font-weight: bold;
 }
 
-button.secondary { background: transparent; color: var(--accent); border: 1px solid var(--accent); }
-button:hover { opacity: 0.8; }
+button.secondary {
+    background: transparent;
+    border: 1px solid var(--accent-color);
+    color: var(--accent-color);
+}
 
+/* The Grid */
 .bingo-card {
     display: grid;
-    grid-template-columns: repeat(5, 1fr); /* 5 equal columns */
+    grid-template-columns: repeat(5, 1fr);
     gap: 8px;
-    background: var(--border);
+    background: var(--border-color);
     padding: 10px;
     border-radius: 8px;
-    width: 100%;          /* Force it to stay inside .container */
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-    margin-top: 20px;
-}
+    width: 100%;
 }
 
 .cell {
-    width: 100%;          /* Fill the 1fr column */
-    aspect-ratio: 1 / 1;
+    aspect-ratio: 1/1;
     background: var(--card-bg);
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 8px;         /* Smaller padding for text room */
-    font-size: clamp(0.6rem, 2vw, 0.85rem); /* Responsive font size */
+    padding: 5px;
+    font-size: 0.75rem;
     text-align: center;
     cursor: pointer;
     border-radius: 4px;
-    word-wrap: break-word; /* Wrap long words */
-    overflow: hidden;      /* Keep text inside */
+    overflow: hidden;
+    word-wrap: break-word;
+    border: 1px solid transparent;
 }
 
-.cell:hover { border-color: var(--highlight); }
+.cell:hover {
+    border-color: var(--highlight-color);
+}
 
 .cell.marked {
-    background: var(--success);
-    color: var(--bg-color);
-    font-weight: bold;
+    background: var(--success-color) !important;
+    color: #1a1b26 !important;
 }
 
 .free-space {
-    color: var(--highlight);
-    border: 1px dashed var(--highlight);
+    color: var(--highlight-color);
+    border: 1px dashed var(--highlight-color);
 }
