@@ -83,6 +83,7 @@ button:active {
 }
 
 .cell {
+    transition: transform 0.1s ease, background 0.2s ease, border 0.2s ease;
     background-color: #24283b;
     color: #c0caf5;
     display: flex;
@@ -100,6 +101,12 @@ button:active {
     word-break: break-word; 
 }
 
+.cell:hover {
+    border-color: var(--highlight-color);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    z-index: 10;
+    
 /* Marked state */
 .cell.marked {
     background-color: #9ece6a !important;
