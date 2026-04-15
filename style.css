@@ -65,3 +65,15 @@ body {
     color: #bb9af7;
     border: 1px dashed #bb9af7;
 }
+
+/* Add this animation */
+@keyframes win-glow {
+    0% { box-shadow: 0 0 5px var(--accent-color); }
+    50% { box-shadow: 0 0 40px var(--success-color); }
+    100% { box-shadow: 0 0 5px var(--accent-color); }
+}
+
+.win-animation {
+    animation: win-glow 1.5s infinite;
+    border: 2px solid var(--success-color) !important;
+}
