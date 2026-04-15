@@ -24,39 +24,33 @@ body {
 }
 
 button {
-    background: transparent;
+    display: inline-block;
+    background: rgba(122, 162, 247, 0.05); /* Very slight blue tint */
     color: var(--accent-color);
-    border: 1px solid var(--accent-color);
+    border: 1px solid var(--accent-color); /* This ensures the box is visible */
     padding: 12px 24px;
     font-family: 'Fira Code', monospace;
     font-size: 0.9rem;
     text-transform: uppercase;
     letter-spacing: 2px;
     cursor: pointer;
+    border-radius: 4px;
     transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
+    margin: 5px;
 }
 
-/* Hover effect: Glowing fill */
+button.secondary {
+    border-color: #f7768e;
+    color: #f7768e;
+    background: rgba(247, 118, 142, 0.05);
+}
+
+/* Hover remains the same high-impact glow */
 button:hover {
     background: var(--accent-color);
-    color: var(--bg-color);
+    color: #1a1b26;
     box-shadow: 0 0 15px var(--accent-color);
 }
-
-/* Secondary button (Clear) - Red theme */
-button.secondary {
-    color: #f7768e; /* Tokyonight Red */
-    border-color: #f7768e;
-}
-
-button.secondary:hover {
-    background: #f7768e;
-    color: var(--bg-color);
-    box-shadow: 0 0 15px #f7768e;
-}
-
 /* Button active state (click) */
 button:active {
     transform: scale(0.95);
@@ -70,6 +64,7 @@ button:active {
 
 /* The Grid - No room for error here */
 .bingo-card {
+    pointer-events: auto;
     display: grid !important;
     /* Force 5 columns of exactly equal width */
     grid-template-columns: repeat(5, 1fr) !important; 
