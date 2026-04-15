@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multiplayer Bingo</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+    <div class="game-container">
+        <h1>BINGO</h1>
+
+        <div id="admin-panel" style="display: none;">
+            <h3>Host Controls</h3>
+            <button class="host-btn" onclick="drawNumber()">Draw Next Number</button>
+            <button class="reset-btn" onclick="resetGame()">Reset Game</button>
+        </div>
+
+        <div id="current-call">--</div>
+        
+        <div class="main-layout">
+            <section>
+                <h2>Your Card</h2>
+                <div id="player-card" class="bingo-card"></div>
+                <button onclick="generateCard()">Get New Card</button>
+            </section>
+
+            <section>
+                <h2>Call Board</h2>
+                <div id="board" class="bingo-grid"></div>
+            </section>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
