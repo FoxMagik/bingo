@@ -51,6 +51,32 @@ function toggleMark(element, index) {
     }
 }
 
+function resetMarkers() {
+    console.log("System override: Clearing board markers...");
+    
+    // 1. Reset the logic array (keeping index 12 as true for Free Space)
+    markedStates = Array(25).fill(false);
+    markedStates[12] = true;
+
+    // 2. Reset the visual UI
+    const cells = document.querySelectorAll('.cell');
+    cells.forEach((cell, index) => {
+        if (index === 12) {
+            cell.classList.add('marked'); // Keep free space marked
+        } else {
+            cell.classList.remove('marked');
+        }
+    });
+
+    // 3. Hide win messages/animations
+    const winMsg = document.getElementById('win-message');
+    if (winMsg) winMsg.style.display = 'none';
+    
+    const board = document.getElementById('bingo-card');
+    if (board) board.classList.remove('win-animation');
+}
+
+
 function checkWin() {
     const size = 5;
     
