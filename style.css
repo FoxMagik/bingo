@@ -1,103 +1,67 @@
-/* Universal Reset */
+/* Universal Reset - CRITICAL */
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
 
-:root {
-    --bg-color: #1a1b26;
-    --card-bg: #24283b;
-    --border-color: #414868;
-    --text-main: #c0caf5;
-    --accent-color: #7aa2f7;
-    --success-color: #9ece6a;
-    --highlight-color: #bb9af7;
-}
-
 body {
-    background-color: #1a1b26; /* Fallback for --bg-color */
-    background-color: var(--bg-color);
-    color: var(--text-main);
-    font-family: 'Fira Code', monospace, sans-serif;
+    background-color: #1a1b26;
+    color: #c0caf5;
+    font-family: 'Fira Code', monospace;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
     padding: 20px;
 }
 
 .container {
     width: 100%;
-    max-width: 500px;
-    text-align: center;
+    max-width: 600px; /* Standardized size */
+    margin: 0 auto;
 }
 
-h1 { 
-    margin-bottom: 20px; 
-    letter-spacing: 2px;
-}
-
-.accent { color: var(--accent-color); }
-
-.controls { 
-    margin-bottom: 20px; 
-    display: flex; 
-    gap: 10px; 
-    justify-content: center; 
-}
-
-button {
-    background: var(--accent-color);
-    color: #1a1b26;
-    border: none;
-    padding: 10px 15px;
-    border-radius: 4px;
-    cursor: pointer;
-    font-weight: bold;
-}
-
-button.secondary {
-    background: transparent;
-    border: 1px solid var(--accent-color);
-    color: var(--accent-color);
-}
-
-/* The Grid */
+/* The Grid - No room for error here */
 .bingo-card {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 8px;
-    background: var(--border-color);
+    display: grid !important;
+    /* Force 5 columns of exactly equal width */
+    grid-template-columns: repeat(5, 1fr) !important; 
+    grid-auto-rows: 1fr; /* Force rows to match column width */
+    gap: 10px;
+    background-color: #414868;
     padding: 10px;
-    border-radius: 8px;
+    border-radius: 12px;
     width: 100%;
+    aspect-ratio: 1 / 1; /* Keeps the whole board a perfect square */
 }
 
 .cell {
-    aspect-ratio: 1/1;
-    background: var(--card-bg);
+    background-color: #24283b;
+    color: #c0caf5;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 5px;
-    font-size: 0.75rem;
     text-align: center;
+    padding: 5px;
+    font-size: clamp(0.6rem, 2.5vw, 0.8rem);
     cursor: pointer;
-    border-radius: 4px;
-    overflow: hidden;
-    word-wrap: break-word;
+    border-radius: 6px;
     border: 1px solid transparent;
+    transition: background 0.2s;
+    /* Important: prevents text from pushing the cell boundaries */
+    overflow: hidden;
+    word-break: break-word; 
 }
 
-.cell:hover {
-    border-color: var(--highlight-color);
-}
-
+/* Marked state */
 .cell.marked {
-    background: var(--success-color) !important;
+    background-color: #9ece6a !important;
     color: #1a1b26 !important;
+    font-weight: bold;
 }
 
 .free-space {
-    color: var(--highlight-color);
-    border: 1px dashed var(--highlight-color);
+    color: #bb9af7;
+    border: 1px dashed #bb9af7;
 }
