@@ -75,9 +75,11 @@ function checkWin() {
 
 function triggerWin() {
     const board = document.getElementById('bingo-card');
-    board.classList.add('win-animation');
+    const msg = document.getElementById('win-message');
     
-    setTimeout(() => {
-        alert("🎉 BINGO!");
-    }, 200);
+    board.classList.add('win-animation');
+    msg.style.display = 'block';
+
+    // Log it to the console for the true tech experience
+    console.log("%c BINGO DETECTED ", "background: #9ece6a; color: #1a1b26; font-weight: bold;");
 }
