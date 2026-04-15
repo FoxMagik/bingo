@@ -9,10 +9,17 @@ const techEntries = [
 ];
 
 function generateCard() {
+    console.log("Attempting to generate card...");
     const cardElement = document.getElementById('bingo-card');
+    
+    if (!cardElement) {
+        console.error("Could not find the bingo-card element!");
+        return;
+    }
+
     cardElement.innerHTML = '';
     
-    // Shuffle using Fisher-Yates or simple sort
+    // Shuffle
     const shuffled = [...techEntries].sort(() => 0.5 - Math.random());
     const selected = shuffled.slice(0, 24);
 
@@ -31,6 +38,7 @@ function generateCard() {
         }
         cardElement.appendChild(cell);
     }
+    console.log("Card generated successfully.");
 }
 
 function resetMarkers() {
@@ -41,5 +49,5 @@ function resetMarkers() {
     });
 }
 
-// Initial load
+// Fire the function when the script loads
 generateCard();
