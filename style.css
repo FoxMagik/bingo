@@ -16,6 +16,52 @@ body {
     padding: 20px;
 }
 
+.controls {
+    margin-bottom: 30px;
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+}
+
+button {
+    background: transparent;
+    color: var(--accent-color);
+    border: 1px solid var(--accent-color);
+    padding: 12px 24px;
+    font-family: 'Fira Code', monospace;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Hover effect: Glowing fill */
+button:hover {
+    background: var(--accent-color);
+    color: var(--bg-color);
+    box-shadow: 0 0 15px var(--accent-color);
+}
+
+/* Secondary button (Clear) - Red theme */
+button.secondary {
+    color: #f7768e; /* Tokyonight Red */
+    border-color: #f7768e;
+}
+
+button.secondary:hover {
+    background: #f7768e;
+    color: var(--bg-color);
+    box-shadow: 0 0 15px #f7768e;
+}
+
+/* Button active state (click) */
+button:active {
+    transform: scale(0.95);
+}
+
 .container {
     width: 100%;
     max-width: 600px; /* Standardized size */
