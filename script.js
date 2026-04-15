@@ -14,6 +14,8 @@ let markedStates = Array(25).fill(false);
 markedStates[12] = true; // Free space is pre-marked
 
 function generateCard() {
+    document.getElementById('win-message').style.display = 'none';
+    document.getElementById('bingo-card').classList.remove('win-animation');
     const cardElement = document.getElementById('bingo-card');
     cardElement.innerHTML = '';
     markedStates = Array(25).fill(false);
