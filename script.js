@@ -8,24 +8,24 @@ const techEntries = [
     "NPM Install", "Git Push Force", "Caffeine Overdose", "Rubber Ducking"
 ];
 
-function generateCard() {
-    console.log("Attempting to generate card...");
-    const cardElement = document.getElementById('bingo-card');
-    
-    if (!cardElement) {
-        console.error("Could not find the bingo-card element!");
-        return;
-    }
+// Keep your techEntries array at the top as is
 
+let markedStates = Array(25).fill(false);
+markedStates[12] = true; // Free space is pre-marked
+
+function generateCard() {
+    const cardElement = document.getElementById('bingo-card');
     cardElement.innerHTML = '';
-    
-    // Shuffle
+    markedStates = Array(25).fill(false);
+    markedStates[12] = true; 
+
     const shuffled = [...techEntries].sort(() => 0.5 - Math.random());
     const selected = shuffled.slice(0, 24);
 
     for (let i = 0; i < 25; i++) {
         const cell = document.createElement('div');
         cell.className = 'cell';
+        cell.dataset.index = i; // Store the index for win checking
         
         if (i === 12) {
             cell.innerText = "FREE_SPACE";
@@ -33,21 +33,51 @@ function generateCard() {
         } else {
             cell.innerText = selected[i > 12 ? i - 1 : i];
             cell.onclick = function() {
-                this.classList.toggle('marked');
+                toggleMark(this, i);
             };
         }
         cardElement.appendChild(cell);
     }
-    console.log("Card generated successfully.");
 }
 
-function resetMarkers() {
-    document.querySelectorAll('.cell').forEach(cell => {
-        if (!cell.classList.contains('free-space')) {
-            cell.classList.remove('marked');
-        }
-    });
+function toggleMark(element, index) {
+    element.classList.toggle('marked');
+    markedStates[index] = element.classList.contains('marked');
+    
+    if (checkWin()) {
+        triggerWin();
+    }
 }
 
-// Fire the function when the script loads
-generateCard();
+function checkWin() {
+    const size = 5;
+    
+    // Check Rows
+    for (let i = 0; i < size; i++) {
+        let row = markedStates.slice(i * size, i * size + size);
+        if (row.every(state => state)) return true;
+    }
+
+    // Check Columns
+    for (let i = 0; i < size; i++) {
+        let col = [0, 1, 2, 3, 4].map(j => markedStates[i + j * size]);
+        if (col.every(state => state)) return true;
+    }
+
+    // Check Diagonals
+    const diag1 = [0, 6, 12, 18, 24].map(i => markedStates[i]);
+    const diag2 = [4, 8, 12, 16, 20].map(i => markedStates[i]);
+    
+    if (diag1.every(state => state) || diag2.every(state => state)) return true;
+
+    return false;
+}
+
+function triggerWin() {
+    const board = document.getElementById('bingo-card');
+    board.classList.add('win-animation');
+    
+    setTimeout(() => {
+        alert("🎉 BINGO!");
+    }, 200);
+}
