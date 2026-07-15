@@ -1,8 +1,8 @@
 const techEntries = [
     "Curtis Raises\nHis Hand",
     "LAPS Is\nMentioned",
-    "Teacher/Principal\nComplaint",
-    "Terry/Curtis\nRepeat Ques",
+    "Teacher or\nPrincipal\nComplaint",
+    "Terry or\nCurtis\nRepeat Ques",
     "Murphy Gets\nAnnoyed",
     "Can't Hear\nBrent R.",
     "Someone Thanks\nSomeone",
@@ -27,7 +27,10 @@ const techEntries = [
     "Curtis Voice\nUp An Octave",
     "Talking Over\nEach Other",
     "Discuss This\nLater...",
-    "Repeat To\nStall Meeting"
+    "Repeat To\nStall Meeting",
+    "Someone\nMetions\n'The High'",
+    "Lara Adds\nTo Meeting",
+    "Unnecessary\nQuestions"
 ];
 
 let markedStates = Array(25).fill(false);
