@@ -28,7 +28,7 @@ const techEntries = [
     "Talking Over\nEach Other",
     "Discuss This\nLater...",
     "Repeat To\nStall Meeting",
-    "Someone\nMetions\n'The High'",
+    "Someone\nMentions\n'The High'",
     "Lara Adds\nTo Meeting",
     "Unnecessary\nQuestions"
 ];
