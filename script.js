@@ -2,7 +2,7 @@ const techEntries = [
     "Curtis Raises\nHis Hand",
     "LAPS Is\nMentioned",
     "Teacher or\nPrincipal\nComplaint",
-    "Terry or\nCurtis\nRepeat Ques",
+    "Terry or\nCurtis\nRepeats a\n Question",
     "Murphy Gets\nAnnoyed",
     "Can't Hear\nBrent R.",
     "Someone Thanks\nSomeone",
