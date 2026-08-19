@@ -30,7 +30,10 @@ const techEntries = [
     "Repeat To\nStall Meeting",
     "Someone\nMentions\n'The High'",
     "Lara Adds\nTo Meeting",
-    "Unnecessary\nQuestions"
+    "Unnecessary\nQuestions",
+    "Stay After Meeting",
+    "Nothing To Add 3x",
+    "Any Questions Silence"
 ];
 
 let markedStates = Array(25).fill(false);
