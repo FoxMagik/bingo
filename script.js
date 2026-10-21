@@ -32,6 +32,8 @@ const techEntries = [
     "Unnecessary\nQuestions",
     "Stay After Meeting",
     "Nothing To Add 3x",
+    "Printer Problems",
+    "Getting Ready For Testing",
     "Any Questions Silence"
 ];
 
