@@ -30,11 +30,12 @@ const techEntries = [
     "Someone\nMentions\n'The High'",
     "Lara Adds\nTo Meeting",
     "Unnecessary\nQuestions",
-    "Stay After Meeting",
-    "Nothing To Add 3x",
-    "Printer Problems",
-    "Getting Ready For Testing",
-    "Any Questions Silence"
+    "Stay After\nMeeting",
+    "Nothing\nTo Add\n3x",
+    "Printer\nProblems",
+    "Getting\nReady For\nTesting",
+    "Discuss How\nTesting Went",
+    "Any Questions\nSilence"
 ];
 
 let markedStates = Array(25).fill(false);
