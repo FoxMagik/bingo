@@ -35,6 +35,8 @@ const techEntries = [
     "Printer\nProblems",
     "Getting\nReady For\nTesting",
     "Discuss How\nTesting Went",
+    "Mic Too Loud",
+    "Anyone Else\nSeeing This?",
     "Any Questions\nSilence"
 ];
 
