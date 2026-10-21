@@ -16,7 +16,6 @@ const techEntries = [
     "Loud Typing\nSounds",
     "Proceeds To\nTalk Anyway",
     "Curtis Has\nNothing",
-    "Simon\nAttends",
     "Blame It\nOn SCCM",
     "Reminded Of\nBasic Job",
     "Virtual\nBackground",
